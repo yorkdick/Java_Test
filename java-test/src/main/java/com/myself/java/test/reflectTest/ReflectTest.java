@@ -12,12 +12,12 @@ public class ReflectTest extends BasicClass {
         System.out.println("ReflectTest init.");
     }
 
-    ReflectTest() {
+    public ReflectTest() {
         System.out.println("Constructor with no param.");
     }
 
 
-    ReflectTest(String str) {
+    public ReflectTest(String str) {
         this.anString = str;
         System.out.println("Constructor with param.");
     }

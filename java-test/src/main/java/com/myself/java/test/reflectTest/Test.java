@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 public class Test {
     public static void main(String[] args) throws Exception {
+//        initTest();
 //        getFiled(ReflectTest.class);
 //        getAllFields(ReflectTest.class);
 //        getMethod(ReflectTest.class);
@@ -28,7 +29,7 @@ public class Test {
         nonStaticMethodWithParam.invoke(test,"test invode method");
 
         final Method nonStaticPrivateMethod = clss.getDeclaredMethod("nonStaticPrivateMethod");
-//        nonStaticPrivateMethod.setAccessible(true);
+        nonStaticPrivateMethod.setAccessible(true);
         nonStaticPrivateMethod.invoke(test);
     }
 
@@ -42,10 +43,16 @@ public class Test {
         System.out.println("After set value. Ant2:"+test.getAnInt2());
 
         System.out.println("Before set value. Ant:"+test.getAnInt());
-        final Field anInt = clss.getDeclaredField("anInt");
-//        anInt.setAccessible(true);
+        Field anInt = clss.getDeclaredField("anInt");
+        System.out.println(anInt.isAccessible());
+        anInt.setAccessible(true);
         anInt.setInt(test,4);
+        System.out.println(anInt.isAccessible());
         System.out.println("After set value. Ant:"+test.getAnInt());
+
+
+        anInt = clss.getDeclaredField("anInt");
+        System.out.println(anInt.isAccessible());
 
     }
 
@@ -55,15 +62,15 @@ public class Test {
 
         System.out.println("Create with newInstance");
         ReflectTest reflectTest = (ReflectTest)clss.newInstance();
-        reflectTest.getAnString();
+        System.out.println(reflectTest.getAnString());
 
         System.out.println("Create with nonparam Constructor");
-        reflectTest = (ReflectTest)(clss.getDeclaredConstructor().newInstance());
-        reflectTest.getAnString();
+        reflectTest = (ReflectTest)(clss.getConstructor().newInstance());
+        System.out.println(reflectTest.getAnString());
 
         System.out.println("Create with param Constructor");
         reflectTest = (ReflectTest)(clss.getDeclaredConstructor(String.class).newInstance("444444"));
-        reflectTest.getAnString();
+        System.out.println(reflectTest.getAnString());
     }
 
 
@@ -134,7 +141,7 @@ public class Test {
     }
 
     public static void initTest() throws ClassNotFoundException {
-        Class<?> clss = ReflectTest.class;
+        Class clss = ReflectTest.class;
         System.out.println(".class 不会初始化类。");
 
         System.out.println(ReflectTest.b);
