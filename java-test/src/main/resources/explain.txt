@@ -1,0 +1,46 @@
+发现ChildTest继承了AbstractTest，所以第一步是先初始化AbstractTest
+
+1.AbstractTest的全局静态变量和静态代码块
+	2.TestClass1的全局静态变量和静态块
+	TestClass static init1
+	3.TestClass1的全局变量和代码块
+	TestClass init1
+	4.TestClass1的构造函数
+	TestClass construct TestClass1
+AbstractTest static init1
+TestClass init1
+TestClass construct TestClass2
+AbstractTest static init2
+
+5.ChildClass的全局静态变量和静态代码块
+TestClass init1
+TestClass construct TestClass5
+ChildTest static init
+
+6.AbstractTest的全局变量和代码块
+TestClass init1
+TestClass construct TestClass3
+AbstractTest init1
+TestClass init1
+TestClass construct TestClass4
+AbstractTest init2
+
+7.AbstractTest的构造函数
+AbstractTest construct
+
+8.ChildClass的全局变量和代码块
+TestClass init1
+TestClass construct TestClass6
+ChildTest init
+
+9.ChildClass的构造函数
+Child construct
+
+打印ChildClass的变量
+3
+执行ChildClass的函数
+Child function test2 4
+由于全局变量是无法覆盖的所以调用的是AbstractTest的变量
+4
+执行ChildClass的函数
+Child function test2 4
