@@ -5,13 +5,16 @@ public class SimpleTest {
     public static final int a =0;
 
     static{
-        System.out.println(ClassLoader.getSystemClassLoader() + " SimpleTest"+" a:"+a);
+//        System.out.println(ClassLoader.getSystemClassLoader() + " SimpleTest"+" a:"+a);
     }
 
     public static void main(String[] args) {
+        System.out.println(SimpleTest.class.getClassLoader());
         System.out.println(ClassLoader.getSystemClassLoader());
-        System.out.println(ClassLoader.getSystemClassLoader().getParent());
-        System.out.println(ClassLoader.getSystemClassLoader().getParent().getParent());
+        System.out.println(Thread.currentThread().getContextClassLoader());
+//        System.out.println(ClassLoader.getSystemClassLoader());
+//        System.out.println(ClassLoader.getSystemClassLoader().getParent());
+//        System.out.println(ClassLoader.getSystemClassLoader().getParent().getParent());
     }
 
     public static void print() {

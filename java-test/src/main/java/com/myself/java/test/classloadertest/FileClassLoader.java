@@ -9,11 +9,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public class FileClassLoader extends ClassLoader {
 
     private String classPath;
-    Map<String, Class<?>> classMap = new ConcurrentHashMap<>();
+//    Map<String, Class<?>> classMap = new ConcurrentHashMap<>();
 
     public FileClassLoader(String classPath) throws IOException {
         this.classPath = classPath;
-//        init();
+        init();
     }
 
     private void init() throws IOException {
@@ -30,7 +30,8 @@ public class FileClassLoader extends ClassLoader {
     private void addFileClass(File file) throws IOException {
         String className = getClassName(file);
         final byte[] bytes = Files.readAllBytes(file.toPath());
-        classMap.put(className, this.defineClass(className, bytes, 0, bytes.length));
+        this.defineClass(className, bytes, 0, bytes.length);
+//        classMap.put(className, this.defineClass(className, bytes, 0, bytes.length));
     }
 
     private String getClassName(File file) {
@@ -46,9 +47,9 @@ public class FileClassLoader extends ClassLoader {
     }
 
     private Class<?> findFromMap(String name) throws ClassNotFoundException {
-        if (classMap.containsKey(name)) {
-            return classMap.get(name);
-        }
+//        if (classMap.containsKey(name)) {
+//            return classMap.get(name);
+//        }
         throw new ClassNotFoundException("Can't find class " + name);
     }
 
