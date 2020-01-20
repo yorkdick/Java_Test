@@ -67,7 +67,7 @@ public class FileClassLoader extends ClassLoader {
                 final byte[] bytes = Files.readAllBytes(file.toPath());
                 return this.defineClass(name, bytes, 0, bytes.length);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new ClassNotFoundException("Can't find class " + e.getMessage());
         }
         throw new ClassNotFoundException("Can't find class " + name);

@@ -6,6 +6,6 @@ public class NoramlClass implements ProxyInterface {
     }
 
     public void function2(String str) {
-        System.out.println("NoramlClass function2, "+str);
+        System.out.println("NoramlClass function2, " + str);
     }
 }

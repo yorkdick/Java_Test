@@ -20,23 +20,23 @@ public class ThreadLocalTest {
 
     public static void inheritableThreadLocalTest() throws InterruptedException {
         iLocalVal.set("iLocalVal");
-        System.out.println("Main thread1 "+iLocalVal.get());
+        System.out.println("Main thread1 " + iLocalVal.get());
         Thread childThread = new Thread(() -> {
 //            iLocalVal.set("iLocalVal2");
-            System.out.println("Child thread "+iLocalVal.get());
+            System.out.println("Child thread " + iLocalVal.get());
             iLocalVal.set("iLocalVal3");
-            System.out.println("Child thread2 "+iLocalVal.get());
+            System.out.println("Child thread2 " + iLocalVal.get());
             iLocalVal.remove();
-            System.out.println("Child thread3 "+iLocalVal.get());
+            System.out.println("Child thread3 " + iLocalVal.get());
 
         });
         childThread.start();
         childThread.join();
-        System.out.println("Main thread1 "+iLocalVal.get());
+        System.out.println("Main thread1 " + iLocalVal.get());
     }
 
-    public static void threadLocalTest(){
-        Thread t1  = new Thread(new Runnable() {
+    public static void threadLocalTest() {
+        Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {
                 //设置线程1中本地变量的值
@@ -48,7 +48,7 @@ public class ThreadLocalTest {
             }
         });
 
-        Thread t2  = new Thread(new Runnable() {
+        Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
                 //设置线程1中本地变量的值

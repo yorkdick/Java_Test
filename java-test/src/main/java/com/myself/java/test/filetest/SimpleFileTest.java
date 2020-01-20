@@ -10,33 +10,33 @@ public class SimpleFileTest {
 
     public static void main(String[] args) throws IOException {
         System.out.println("Create inf not exits file1.");
-        File file = createFile(filePath,true);
+        File file = createFile(filePath, true);
         System.out.println("Write something to file1.");
-        writeSomething(file,false);
+        writeSomething(file, false);
         System.out.println("Read from file1.");
         readFile(file);
 
         System.out.println("Create inf not exits file2.");
-        File file2 = createFile(filePath2,false);
+        File file2 = createFile(filePath2, false);
         System.out.println("Copy from file1 to file2.");
-        copyFile(file,file2);
+        copyFile(file, file2);
         System.out.println("Read from file2.");
         readFile(file2);
     }
 
     private static void copyFile(File file, File file2) throws IOException {
-        try(
+        try (
                 FileInputStream inputStream = new FileInputStream(file);
-        FileOutputStream outputStream = new FileOutputStream(file2)
-        ){
+                FileOutputStream outputStream = new FileOutputStream(file2)
+        ) {
             int n = -1;
-            while((n = inputStream.read())!=-1){
+            while ((n = inputStream.read()) != -1) {
                 outputStream.write(n);
             }
         }
     }
 
-    public static File createFile(String filePath,boolean cleanIfExists) throws IOException {
+    public static File createFile(String filePath, boolean cleanIfExists) throws IOException {
         File file = new File(filePath);
         if (file.exists() && cleanIfExists) {
             file.delete();
@@ -49,8 +49,8 @@ public class SimpleFileTest {
         return file;
     }
 
-    public static void writeSomething(File file,boolean append) throws IOException {
-        try (FileOutputStream out = new FileOutputStream(file,append)) {
+    public static void writeSomething(File file, boolean append) throws IOException {
+        try (FileOutputStream out = new FileOutputStream(file, append)) {
             for (int i = 0; i < 100; i++) {
                 out.write(String.valueOf(i).getBytes(Charset.forName("UTF-8")));
             }
@@ -75,7 +75,7 @@ public class SimpleFileTest {
         try (FileInputStream inputStream = new FileInputStream(file);) {
             StringBuffer sBuffer = new StringBuffer();
             int n = -1;//读取文件的一个字节(8个二进制位),并将其由二进制转成十进制的整数返回
-            while ((n = inputStream.read())!=-1)  //当n不等于-1,则代表未到末尾
+            while ((n = inputStream.read()) != -1)  //当n不等于-1,则代表未到末尾
             {
                 char by = (char) n; //转成字符
                 sBuffer.append(by);

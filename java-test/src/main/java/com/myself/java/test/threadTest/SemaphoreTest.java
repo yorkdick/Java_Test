@@ -7,7 +7,7 @@ public class SemaphoreTest {
 
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++) {
-            new Thread(runnable,"Worker"+i).start();
+            new Thread(runnable, "Worker" + i).start();
         }
     }
 
@@ -15,13 +15,13 @@ public class SemaphoreTest {
         try {
             machines.acquire();
             try {
-                System.out.println(Thread.currentThread().getName()+" get machine and working.");
+                System.out.println(Thread.currentThread().getName() + " get machine and working.");
                 Thread.sleep(2000);
-                System.out.println(Thread.currentThread().getName()+" return machine.");
-            }finally {
+                System.out.println(Thread.currentThread().getName() + " return machine.");
+            } finally {
                 machines.release();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     };

@@ -9,8 +9,8 @@ public class Test {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         final ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
-        System.out.println("SystemLoader:"+systemClassLoader);
-        System.out.println("ContextLoader:"+Thread.currentThread().getContextClassLoader());
+        System.out.println("SystemLoader:" + systemClassLoader);
+        System.out.println("ContextLoader:" + Thread.currentThread().getContextClassLoader());
 
         FileClassLoader fileClassLoader = new FileClassLoader("/Users/yubo/Documents/培训/loaderTest");
 

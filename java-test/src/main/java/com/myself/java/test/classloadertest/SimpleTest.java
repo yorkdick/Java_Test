@@ -2,9 +2,9 @@ package com.myself.java.test.classloadertest;
 
 public class SimpleTest {
 
-    public static final int a =0;
+    public static final int a = 0;
 
-    static{
+    static {
 //        System.out.println(ClassLoader.getSystemClassLoader() + " SimpleTest"+" a:"+a);
     }
 

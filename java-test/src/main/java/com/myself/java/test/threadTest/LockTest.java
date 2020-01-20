@@ -9,7 +9,7 @@ public class LockTest {
 
     public static CountDownLatch countDown = new CountDownLatch(3);
 
-    public static int i=0;
+    public static int i = 0;
 
     public static void main(String[] args) throws InterruptedException {
         LockTest lockTest = new LockTest();
@@ -34,7 +34,7 @@ public class LockTest {
         thread3.start();
 
         countDown.await();
-        System.out.println(i+" "+(System.currentTimeMillis()-start));
+        System.out.println(i + " " + (System.currentTimeMillis() - start));
 
     }
 
@@ -55,12 +55,12 @@ public class LockTest {
         try {
             Thread.sleep(2000);
             lock.lock();
-            try{
+            try {
                 for (int j = 0; j < 10000; j++) {
 //                    Thread.sleep(10);
                     i++;
                 }
-            }finally {
+            } finally {
                 lock.unlock();
             }
             countDown.countDown();

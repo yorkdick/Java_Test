@@ -6,6 +6,6 @@ public class NoInterfaceClass {
     }
 
     public void function2(String str) {
-        System.out.println("NoInterfaceClass function2, "+str);
+        System.out.println("NoInterfaceClass function2, " + str);
     }
 }

@@ -6,11 +6,10 @@ public class CyclicBarrierTest {
     public static CyclicBarrier cyclicBarrier = new CyclicBarrier(3);
 
 
-
     public static void main(String[] args) throws InterruptedException {
 
         for (int i = 0; i < 11; i++) {
-            new WaitThread(i%4,"Thread"+i).start();
+            new WaitThread(i % 4, "Thread" + i).start();
         }
 
         Thread.sleep(3000);
@@ -18,10 +17,11 @@ public class CyclicBarrierTest {
 
     }
 
-    public static class WaitThread extends Thread{
+    public static class WaitThread extends Thread {
 
         int waitTime;
-        public WaitThread(int waitTime,String name){
+
+        public WaitThread(int waitTime, String name) {
             super(name);
             this.waitTime = waitTime;
         }
@@ -30,10 +30,10 @@ public class CyclicBarrierTest {
         public void run() {
             try {
                 Thread.sleep(waitTime);
-                System.out.println(Thread.currentThread().getName()+" wait for others.");
+                System.out.println(Thread.currentThread().getName() + " wait for others.");
                 cyclicBarrier.await();
-                System.out.println(Thread.currentThread().getName()+" done.");
-            }catch (Exception e){
+                System.out.println(Thread.currentThread().getName() + " done.");
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

@@ -15,20 +15,20 @@ public class DynamicProxyTest {
         proxy.function2("4444");
     }
 
-    public static <T> T getProxyInstance(T obj){
+    public static <T> T getProxyInstance(T obj) {
         ClassLoader classLoader = obj.getClass().getClassLoader();
         Class<?>[] interfaces = obj.getClass().getInterfaces();
-        InvocationHandler invocationHandler = new InvocationHandler(){
+        InvocationHandler invocationHandler = new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method targetMethod, Object[] args) throws Throwable {
-                System.out.println("Dynamic before invoke method."+targetMethod);
+                System.out.println("Dynamic before invoke method." + targetMethod);
 
                 Object returnValue = targetMethod.invoke(obj, args);
 
-                System.out.println("Dynamic after invoke method."+targetMethod);
+                System.out.println("Dynamic after invoke method." + targetMethod);
                 return returnValue;
             }
         };
-        return (T)Proxy.newProxyInstance(classLoader,interfaces,invocationHandler);
+        return (T) Proxy.newProxyInstance(classLoader, interfaces, invocationHandler);
     }
 }

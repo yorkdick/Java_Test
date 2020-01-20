@@ -38,7 +38,7 @@ public class WaitTest {
         public void run() {
             try {
                 while (true) {
-                    count ++;
+                    count++;
                     System.out.println(Thread.currentThread().getName() + " produce 1, left " + count + ".");
                     if (count >= 10) {
                         synchronized (consumerStatus) {
@@ -59,9 +59,9 @@ public class WaitTest {
     }
 
     public static void main(String[] args) {
-        Thread producer = new Thread(new Producer(),"Producer");
-        Thread consumer1 = new Thread(new Consumer(),"consumer1");
-        Thread consumer2 = new Thread(new Consumer(),"consumer2");
+        Thread producer = new Thread(new Producer(), "Producer");
+        Thread consumer1 = new Thread(new Consumer(), "consumer1");
+        Thread consumer2 = new Thread(new Consumer(), "consumer2");
 
         producer.start();
         consumer1.start();

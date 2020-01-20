@@ -7,10 +7,10 @@ public class TestClass {
     }
 
 
-
-    TestClass(String a){
-        System.out.println("TestClass construct"+" "+a);
+    TestClass(String a) {
+        System.out.println("TestClass construct" + " " + a);
     }
+
     {
         System.out.println("TestClass init1");
     }

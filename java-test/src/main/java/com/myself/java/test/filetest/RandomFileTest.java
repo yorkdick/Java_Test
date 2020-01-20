@@ -26,19 +26,19 @@ public class RandomFileTest {
 
 
         System.out.println("Append something from offset.");
-        appendSomething(filePath,4);
+        appendSomething(filePath, 4);
         System.out.println("After append.");
         readFile(filePath);
 
     }
 
     private static void appendSomething(String filePath, long offset) throws IOException {
-        try(RandomAccessFile accessFile = new RandomAccessFile(filePath,"rw")){
+        try (RandomAccessFile accessFile = new RandomAccessFile(filePath, "rw")) {
             StringBuilder sb = new StringBuilder();
             accessFile.seek(offset);
             String line = null;
-            while((line=accessFile.readLine())!=null){
-                sb.append(line+"\r\n");
+            while ((line = accessFile.readLine()) != null) {
+                sb.append(line + "\r\n");
             }
 
             accessFile.seek(offset);
@@ -47,27 +47,27 @@ public class RandomFileTest {
         }
     }
 
-    public static void writeSomething(String filePath,long offset) throws IOException {
-        try(RandomAccessFile accessFile = new RandomAccessFile(filePath,"rw")){
+    public static void writeSomething(String filePath, long offset) throws IOException {
+        try (RandomAccessFile accessFile = new RandomAccessFile(filePath, "rw")) {
             accessFile.seek(offset);
             accessFile.write("add something\r\n".getBytes());
         }
     }
 
     public static void writeSomething(String filePath) throws IOException {
-        try(RandomAccessFile accessFile = new RandomAccessFile(filePath,"rw")){
+        try (RandomAccessFile accessFile = new RandomAccessFile(filePath, "rw")) {
             //移动指针到末尾
             accessFile.seek(accessFile.length());
             accessFile.write("add something\r\n".getBytes());
         }
     }
 
-    public static void readFile(String filePath,long offset) throws IOException {
-        try(RandomAccessFile accessFile = new RandomAccessFile(filePath,"r")){
+    public static void readFile(String filePath, long offset) throws IOException {
+        try (RandomAccessFile accessFile = new RandomAccessFile(filePath, "r")) {
             accessFile.seek(offset);
             byte[] bytes = new byte[1024];
             int hasRead = 0;
-            while ((hasRead = accessFile.read(bytes)) > 0){
+            while ((hasRead = accessFile.read(bytes)) > 0) {
                 System.out.println(new String(bytes, 0, hasRead));
             }
         }

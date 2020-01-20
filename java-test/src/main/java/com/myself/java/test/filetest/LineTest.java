@@ -8,8 +8,8 @@ public class LineTest {
     public static String filePath = "/Users/yubo/Documents/培训/test/test.txt";
 
     public static void main(String[] args) throws IOException {
-        File file = createFile(filePath,true);
-        writeSomething(file,true);
+        File file = createFile(filePath, true);
+        writeSomething(file, true);
         readFile(file);
     }
 
@@ -25,8 +25,8 @@ public class LineTest {
         return file;
     }
 
-    public static void writeSomething(File file,boolean append) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file,append));) {
+    public static void writeSomething(File file, boolean append) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, append));) {
             for (int i = 0; i < 10; i++) {
                 writer.write(String.valueOf(i));
                 writer.newLine();
@@ -37,7 +37,7 @@ public class LineTest {
     public static void readFile(File file) throws IOException {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file));) {
             String line = null;
-            while((line = bufferedReader.readLine())!=null){
+            while ((line = bufferedReader.readLine()) != null) {
                 System.out.println(line);
             }
         }

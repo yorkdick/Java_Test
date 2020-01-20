@@ -38,14 +38,14 @@ public class LongSocketTest {
                         ) {
                             // 建立好连接后，从socket中获取输入流，并建立缓冲区进行读取
                             String line = null;
-                            while(!CLOSE_COMMAND.equals((line = bufferedReader.readLine()))){
+                            while (!CLOSE_COMMAND.equals((line = bufferedReader.readLine()))) {
                                 System.out.println(Thread.currentThread().getName() + " get action from client: " + line);
                                 Thread.sleep(2000);
                                 System.out.println(Thread.currentThread().getName() + " Action is done, send response. ");
-                                writeLine(bufferedWriter,line+" is done.");
+                                writeLine(bufferedWriter, line + " is done.");
                             }
                             System.out.println(Thread.currentThread().getName() + " get close action from client. Close socket.");
-                            writeLine(bufferedWriter,line+" is done.");
+                            writeLine(bufferedWriter, line + " is done.");
                         } catch (Exception e) {
                             e.printStackTrace();
                         } finally {
@@ -65,28 +65,28 @@ public class LongSocketTest {
 
     public static void startSocketClient() {
         new Thread(() -> {
-            try(Socket socket =  new Socket(host, port);
-                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            try (Socket socket = new Socket(host, port);
+                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             ) {
-                writeLine(bufferedWriter,"Create");
-                System.out.println(Thread.currentThread().getName()+" get result from sever "+bufferedReader.readLine());
+                writeLine(bufferedWriter, "Create");
+                System.out.println(Thread.currentThread().getName() + " get result from sever " + bufferedReader.readLine());
 
-                writeLine(bufferedWriter,"Update");
-                System.out.println(Thread.currentThread().getName()+" get result from sever "+bufferedReader.readLine());
+                writeLine(bufferedWriter, "Update");
+                System.out.println(Thread.currentThread().getName() + " get result from sever " + bufferedReader.readLine());
 
-                writeLine(bufferedWriter,"Delete");
-                System.out.println(Thread.currentThread().getName()+" get result from sever "+bufferedReader.readLine());
+                writeLine(bufferedWriter, "Delete");
+                System.out.println(Thread.currentThread().getName() + " get result from sever " + bufferedReader.readLine());
 
-                writeLine(bufferedWriter,CLOSE_COMMAND);
-                System.out.println(Thread.currentThread().getName()+" get result from sever "+bufferedReader.readLine());
+                writeLine(bufferedWriter, CLOSE_COMMAND);
+                System.out.println(Thread.currentThread().getName() + " get result from sever " + bufferedReader.readLine());
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }).start();
     }
 
-    public static void writeLine(BufferedWriter bufferedWriter,String line) throws IOException {
+    public static void writeLine(BufferedWriter bufferedWriter, String line) throws IOException {
         bufferedWriter.write(line);
         bufferedWriter.newLine();
         bufferedWriter.flush();

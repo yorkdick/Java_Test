@@ -9,12 +9,12 @@ import java.lang.reflect.Method;
 public class CglibProxyFactory<T> implements MethodInterceptor {
     private T target;
 
-    public CglibProxyFactory(T target){
+    public CglibProxyFactory(T target) {
         this.target = target;
     }
 
     //给目标对象创建一个代理对象
-    public T getProxyInstance(){
+    public T getProxyInstance() {
         //1.工具类
         Enhancer en = new Enhancer();
         //2.设置父类
@@ -22,7 +22,7 @@ public class CglibProxyFactory<T> implements MethodInterceptor {
         //3.设置回调函数
         en.setCallback(this);
         //4.创建子类(代理对象)
-        return (T)en.create();
+        return (T) en.create();
     }
 
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {

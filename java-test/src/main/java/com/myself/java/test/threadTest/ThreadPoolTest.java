@@ -8,10 +8,10 @@ public class ThreadPoolTest {
         try {
             System.out.println("Task start...");
             for (int j = 0; j < 10; j++) {
-                System.out.println(Thread.currentThread().getName()+" "+j);
+                System.out.println(Thread.currentThread().getName() + " " + j);
                 Thread.sleep(2000);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     };
@@ -37,32 +37,34 @@ public class ThreadPoolTest {
 //        scheduledExecutorService.scheduleWithFixedDelay(runnable,0,5000,TimeUnit.MILLISECONDS);
     }
 
-    public static void singlePoolTest(){
+    public static void singlePoolTest() {
         final ExecutorService executorService = Executors.newSingleThreadExecutor();
-        for (int i = 0; i < 4 ; i++) {
+        for (int i = 0; i < 4; i++) {
             executorService.execute(runnable);
         }
     }
 
-    public static void cachedPoolTest(){
+    public static void cachedPoolTest() {
         final ExecutorService executorService = Executors.newCachedThreadPool();
-        for (int i = 0; i < 10 ; i++) {
+        for (int i = 0; i < 10; i++) {
             executorService.execute(runnable);
         }
     }
 
     public static void fixedPoolTest() throws InterruptedException {
         final ExecutorService executorService = Executors.newFixedThreadPool(4);
-        for (int i = 0; i < 10 ; i++) {
+        for (int i = 0; i < 10; i++) {
             executorService.execute(runnable);
         }
 //        executorService.shutdown();
         executorService.shutdownNow();
 
-        executorService.execute(()->{});
+        executorService.execute(() -> {
+        });
 
         System.out.println("Shutdown threadPool");
-        System.out.println(executorService.awaitTermination(2000, TimeUnit.MILLISECONDS));;
+        System.out.println(executorService.awaitTermination(2000, TimeUnit.MILLISECONDS));
+        ;
         System.out.println("ThreadPool was shutdown.");
     }
 }

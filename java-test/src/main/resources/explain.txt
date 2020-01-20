@@ -1,12 +1,12 @@
 发现ChildTest继承了AbstractTest，所以第一步是先初始化AbstractTest
 
 1.AbstractTest的全局静态变量和静态代码块
-	2.TestClass1的全局静态变量和静态块
-	TestClass static init1
-	3.TestClass1的全局变量和代码块
-	TestClass init1
-	4.TestClass1的构造函数
-	TestClass construct TestClass1
+    2.TestClass1的全局静态变量和静态块
+    TestClass static init1
+    3.TestClass1的全局变量和代码块
+    TestClass init1
+    4.TestClass1的构造函数
+    TestClass construct TestClass1
 AbstractTest static init1
 TestClass init1
 TestClass construct TestClass2

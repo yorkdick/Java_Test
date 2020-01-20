@@ -25,8 +25,8 @@ public class Test {
         final Method nonStaticMethod = clss.getDeclaredMethod("nonStaticMethod");
         nonStaticMethod.invoke(test);
 
-        final Method nonStaticMethodWithParam = clss.getDeclaredMethod("nonStaticMethodWithParam",String.class);
-        nonStaticMethodWithParam.invoke(test,"test invode method");
+        final Method nonStaticMethodWithParam = clss.getDeclaredMethod("nonStaticMethodWithParam", String.class);
+        nonStaticMethodWithParam.invoke(test, "test invode method");
 
         final Method nonStaticPrivateMethod = clss.getDeclaredMethod("nonStaticPrivateMethod");
         nonStaticPrivateMethod.setAccessible(true);
@@ -37,18 +37,18 @@ public class Test {
         Class<?> clss = ReflectTest.class;
         ReflectTest test = new ReflectTest();
 
-        System.out.println("Before set value. Ant2:"+test.getAnInt2());
+        System.out.println("Before set value. Ant2:" + test.getAnInt2());
         final Field anInt2 = clss.getDeclaredField("anInt2");
-        anInt2.setInt(test,4);
-        System.out.println("After set value. Ant2:"+test.getAnInt2());
+        anInt2.setInt(test, 4);
+        System.out.println("After set value. Ant2:" + test.getAnInt2());
 
-        System.out.println("Before set value. Ant:"+test.getAnInt());
+        System.out.println("Before set value. Ant:" + test.getAnInt());
         Field anInt = clss.getDeclaredField("anInt");
         System.out.println(anInt.isAccessible());
         anInt.setAccessible(true);
-        anInt.setInt(test,4);
+        anInt.setInt(test, 4);
         System.out.println(anInt.isAccessible());
-        System.out.println("After set value. Ant:"+test.getAnInt());
+        System.out.println("After set value. Ant:" + test.getAnInt());
 
 
         anInt = clss.getDeclaredField("anInt");
@@ -61,26 +61,25 @@ public class Test {
         Class<?> clss = ReflectTest.class;
 
         System.out.println("Create with newInstance");
-        ReflectTest reflectTest = (ReflectTest)clss.newInstance();
+        ReflectTest reflectTest = (ReflectTest) clss.newInstance();
         System.out.println(reflectTest.getAnString());
 
         System.out.println("Create with nonparam Constructor");
-        reflectTest = (ReflectTest)(clss.getConstructor().newInstance());
+        reflectTest = (ReflectTest) (clss.getConstructor().newInstance());
         System.out.println(reflectTest.getAnString());
 
         System.out.println("Create with param Constructor");
-        reflectTest = (ReflectTest)(clss.getDeclaredConstructor(String.class).newInstance("444444"));
+        reflectTest = (ReflectTest) (clss.getDeclaredConstructor(String.class).newInstance("444444"));
         System.out.println(reflectTest.getAnString());
     }
 
 
-
-    public static void getAllFields(Class<?> clss){
+    public static void getAllFields(Class<?> clss) {
         System.out.println("getDeclaredFields");
         Arrays.stream(clss.getDeclaredFields()).forEach(field -> System.out.println(field));
 
         Class<?> superclass = null;
-        while((superclass=clss.getSuperclass())!=Object.class){
+        while ((superclass = clss.getSuperclass()) != Object.class) {
             System.out.println("");
             System.out.println("Super class getDeclaredFields");
             Arrays.stream(superclass.getDeclaredFields()).forEach(field -> System.out.println(field));
@@ -108,12 +107,12 @@ public class Test {
         System.out.println(clss.getField("anString"));
     }
 
-    public static void getAllMethods(Class<?> clss){
+    public static void getAllMethods(Class<?> clss) {
         System.out.println("getDeclaredMethods");
         Arrays.stream(clss.getDeclaredMethods()).forEach(obj -> System.out.println(obj));
 
         Class<?> superclass = null;
-        while((superclass=clss.getSuperclass())!=Object.class){
+        while ((superclass = clss.getSuperclass()) != Object.class) {
             System.out.println("");
             System.out.println("Super class getDeclaredMethods");
             Arrays.stream(superclass.getDeclaredMethods()).forEach(obj -> System.out.println(obj));

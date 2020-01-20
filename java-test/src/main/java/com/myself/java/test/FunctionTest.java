@@ -8,14 +8,14 @@ public class FunctionTest {
         Predicate<String> predicate = s -> "aaa".equals(s);
         System.out.println(predicate.test("aaa"));
 
-        BiPredicate<String,Integer> biPredicate = (a, b) -> Integer.valueOf(a) > b;
-        System.out.println(biPredicate.test("4",3));
+        BiPredicate<String, Integer> biPredicate = (a, b) -> Integer.valueOf(a) > b;
+        System.out.println(biPredicate.test("4", 3));
 
         Consumer<String> consumer = (s) -> System.out.println(s);
         consumer.accept("4");
 
-        BiConsumer<String,Integer> biConsumer = (a, b) -> System.out.println(a+" "+b.toString());
-        biConsumer.accept("1",4);
+        BiConsumer<String, Integer> biConsumer = (a, b) -> System.out.println(a + " " + b.toString());
+        biConsumer.accept("1", 4);
 
         Supplier<String> stringSupplier = () -> UUID.randomUUID().toString();
         System.out.println(stringSupplier.get());
@@ -38,6 +38,6 @@ public class FunctionTest {
     }
 
     public static String convertS(String a, FunctionInterface functionInterface) {
-        return functionInterface.convert(a,a);
+        return functionInterface.convert(a, a);
     }
 }

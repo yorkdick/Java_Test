@@ -29,28 +29,26 @@ public class ChildTest extends AbstractTest {
         ChildTest childTest = new ChildTest();
 
 
-
-
         System.out.println(childTest.test2);
         childTest.test2("4");
 
-        AbstractTest abstractTest = (AbstractTest)childTest;
+        AbstractTest abstractTest = (AbstractTest) childTest;
         System.out.println(abstractTest.test2);
         abstractTest.test2("4");
     }
 
-    ChildTest(){
+    ChildTest() {
         System.out.println("Child construct");
     }
 
     @Override
     public void test(String a) {
-        System.out.println("Child function test "+a);
+        System.out.println("Child function test " + a);
     }
 
     @Override
     public void test2(String a) {
-        System.out.println("Child function test2 "+a);
+        System.out.println("Child function test2 " + a);
     }
 }
 

@@ -12,3 +12,7 @@ buildNumber.properties
 *.iml
 workspace.xml
 java-test/.idea
+PythonTest/.idea
+mvnw
+mvnw.cmd
+java-test/.mvn

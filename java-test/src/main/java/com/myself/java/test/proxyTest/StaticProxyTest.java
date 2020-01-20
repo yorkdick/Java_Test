@@ -12,10 +12,10 @@ public class StaticProxyTest {
         proxyNormal.function2("444");
     }
 
-    public static class ProxyNormal implements ProxyInterface{
+    public static class ProxyNormal implements ProxyInterface {
         private ProxyInterface proxyInterface;
 
-        public ProxyNormal(ProxyInterface proxyInterface){
+        public ProxyNormal(ProxyInterface proxyInterface) {
             this.proxyInterface = proxyInterface;
         }
 
@@ -28,10 +28,10 @@ public class StaticProxyTest {
 
         @Override
         public void function2(String str) {
-            System.out.println("ProxyNormal before function2,"+str);
-            str = str+" proxy.";
+            System.out.println("ProxyNormal before function2," + str);
+            str = str + " proxy.";
             proxyInterface.function2(str);
-            System.out.println("ProxyNormal after function2,"+str);
+            System.out.println("ProxyNormal after function2," + str);
         }
     }
 }
